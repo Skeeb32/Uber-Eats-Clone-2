@@ -12,7 +12,7 @@ const foods = [
     image: "https://media.istockphoto.com/id/543663322/photo/meat-lasagna.jpg?b=1&s=170667a&w=0&k=20&c=sCZaWMZ3gUG4xMz146sz_SV62WyZp1nV2FVqfi3zZss=",
   },
   {
-    title: "Lasagna",
+    title: "Tandoori Chicken",
     description: "Amazing Indian dish with lenderloin chicken off the sizzles",
     price: "$19.25",
     image: "https://media.istockphoto.com/id/911502736/photo/tandoori-chicken.jpg?s=612x612&w=0&k=20&c=hDjQEaveTpPyKNp8JHR4_7CHZRbrDb4_sH-VDsamPJU=",
@@ -24,11 +24,18 @@ const foods = [
     image: "https://st3.depositphotos.com/1373322/15052/i/450/depositphotos_150524334-stock-photo-tortillas-with-tomato-salsa-chicken.jpg",
   },
   {
+    title: "Dave's Hot Chicken Combo",
+    description: "The best hot chicken sandwich you'll ever eat with pickles and spicy tenders.",
+    price: "$12.50",
+    image: "https://s.hdnux.com/photos/01/20/76/11/21226073/7/rawImage.jpg",
+  },
+  {
     title: "Chicken Caesar Salad",
     description: "Healthy varietst of fresh greens, topped with baked chicken.",
     price: "$21.50",
     image: "https://olo-images-live.imgix.net/b3/b30303bbc7904eaaa4f1535fecb29633.jpg?auto=format%2Ccompress&q=60&cs=tinysrgb&w=1200&h=800&fit=fill&fm=png32&bg=transparent&s=10bc93f04dba0ca7509cf3b0fa69ad35",
   },
+  
 ]; 
 
 const styles = StyleSheet.create({
