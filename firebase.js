@@ -1,15 +1,16 @@
-import firebase from "firebase"
+// import firebase from "firebase";
+// import 'firebase/compat/auth';
+// import 'firebase/compat/firestore'
 
-// Your web app's Firebase configuration
-const firebaseConfig = {
-  apiKey: "AIzaSyCM9GCUOViu-g5awXBmPeqdRXvyOXqoGKc",
-  authDomain: "uber-eats-clone-372210.firebaseapp.com",
-  projectId: "uber-eats-clone-372210",
-  storageBucket: "uber-eats-clone-372210.appspot.com",
-  messagingSenderId: "330646805333",
-  appId: "1:330646805333:web:56f506567d3a78e791eddc"
-};
+// const firebaseConfig = {
+//   apiKey: "AIzaSyCM9GCUOViu-g5awXBmPeqdRXvyOXqoGKc",
+//   authDomain: "uber-eats-clone-372210.firebaseapp.com",
+//   projectId: "uber-eats-clone-372210",
+//   storageBucket: "uber-eats-clone-372210.appspot.com",
+//   messagingSenderId: "330646805333",
+//   appId: "1:330646805333:web:56f506567d3a78e791eddc"
+// };
 
-!firebase.apps.length ? firebase.initializeApp(firebaseConfig) : firebase.app();
+// !firebase.apps.length ? firebase.initializeApp(firebaseConfig) : firebase.app();
 
-export default firebase;
+// export default firebase;

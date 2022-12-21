@@ -40,19 +40,22 @@ const YELP_API_KEY =
     useEffect(() => {
       getRestaurantsFromYelp();
     }, [city, activeTab]);
-
-  return (
-    <SafeAreaView style={{ backgroundColor: "#eee", flex: 1 }}>
-      <View style={{ backgroundColor: "white", padding: 15 }}>
-        <HeaderTabs activeTab={activeTab} setActiveTab={setActiveTab} />
-        <SearchBar cityHandler={setCity} />
-      </View>
-      <ScrollView showsVerticalScrollIndicator={false}>
-        <Categories />
-        <RestaurantItems restaurantData={restaurantData} navigation={navigation}/>
-      </ScrollView> 
-      <Divider width={1} />
-      <BottomTabs />
-    </SafeAreaView>
-  );
-}
+  
+    return (
+      <SafeAreaView style={{ backgroundColor: "#eee", flex: 1 }}>
+        <View style={{ backgroundColor: "white", padding: 15 }}>
+          <HeaderTabs activeTab={activeTab} setActiveTab={setActiveTab} />
+          <SearchBar cityHandler={setCity} />
+        </View>
+        <ScrollView showsVerticalScrollIndicator={false}>
+          <Categories />
+          <RestaurantItems
+            restaurantData={restaurantData}
+            navigation={navigation}
+          />
+        </ScrollView>
+        <Divider width={1} />
+        <BottomTabs />
+      </SafeAreaView>
+    );
+  }

@@ -1,45 +1,9 @@
-import { View, Text, StyleSheet, Image, ScrollView } from 'react-native'
-import React from 'react'
-import { Divider } from 'react-native-elements/dist/divider/Divider';
-import BouncyCheckbox from 'react-native-bouncy-checkbox';
-import { useDispatch } from 'react-redux';
+import React from "react";
+import { View, Text, StyleSheet, Image, ScrollView } from "react-native";
+import { Divider } from "react-native-elements";
+import BouncyCheckbox from "react-native-bouncy-checkbox";
+import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-
-const foods = [
-
-  {
-    title: "Lasagna",
-    description: "With butter lettuce, tomato and sauce bechamel",
-    price: "$13.50",
-    image: "https://media.istockphoto.com/id/543663322/photo/meat-lasagna.jpg?b=1&s=170667a&w=0&k=20&c=sCZaWMZ3gUG4xMz146sz_SV62WyZp1nV2FVqfi3zZss=",
-  },
-  {
-    title: "Tandoori Chicken",
-    description: "Amazing Indian dish with lenderloin chicken off the sizzles",
-    price: "$19.25",
-    image: "https://media.istockphoto.com/id/911502736/photo/tandoori-chicken.jpg?s=612x612&w=0&k=20&c=hDjQEaveTpPyKNp8JHR4_7CHZRbrDb4_sH-VDsamPJU=",
-  },
-  {
-    title: "Chilaquiles",
-    description: "Chilaquiles wiht cheese and sauce. A declicious Mexican dish",
-    price: "$14.50",
-    image: "https://st3.depositphotos.com/1373322/15052/i/450/depositphotos_150524334-stock-photo-tortillas-with-tomato-salsa-chicken.jpg",
-  },
-  {
-    title: "Dave's Hot Chicken Combo",
-    description: "The best hot chicken sandwich you'll ever eat with pickles and spicy tenders.",
-    price: "$12.50",
-    image: "https://s.hdnux.com/photos/01/20/76/11/21226073/7/rawImage.jpg",
-  },
-  {
-    title: "Chicken Caesar Salad",
-    description: "Healthy varietst of fresh greens, topped with baked chicken.",
-    price: "$21.50",
-    image: "https://olo-images-live.imgix.net/b3/b30303bbc7904eaaa4f1535fecb29633.jpg?auto=format%2Ccompress&q=60&cs=tinysrgb&w=1200&h=800&fit=fill&fm=png32&bg=transparent&s=10bc93f04dba0ca7509cf3b0fa69ad35",
-  },
-  
-]; 
-
 
 const styles = StyleSheet.create({
   menuItemStyle: {
@@ -54,9 +18,12 @@ const styles = StyleSheet.create({
   },
 });
 
-
-
-export default function MenuItems(restaurantName) {
+export default function MenuItems({
+  restaurantName,
+  foods,
+  hideCheckbox,
+  marginLeft,
+}) {
   const dispatch = useDispatch();
 
   const selectItem = (item, checkboxValue) =>
@@ -69,35 +36,39 @@ export default function MenuItems(restaurantName) {
       },
     });
 
-    const cartItems = useSelector(
-      (state) => state.cartReducer.selectedItems.items
-    );
+  const cartItems = useSelector(
+    (state) => state.cartReducer.selectedItems.items
+  );
 
-    const isFoodInCart = (food, cartItems) => 
+  const isFoodInCart = (food, cartItems) =>
     Boolean(cartItems.find((item) => item.title === food.title));
 
   return (
-    <ScrollView showsVerticalScrollIndicator={false}> 
-    {foods.map((food, index) => (
-      <View key={index}>
-        <View style ={styles.menuItemStyle}>
-          <BouncyCheckbox
-            iconStyle={{ borderColor: "lightgray", borderRadius: 0 }}
-            fillColor="green"
-            isChecked={isFoodInCart(food, cartItems)}
-            onPress={(checkboxValue) => selectItem( food, checkboxValue )}
+    <ScrollView showsVerticalScrollIndicator={false}>
+      {foods.map((food, index) => (
+        <View key={index}>
+          <View style={styles.menuItemStyle}>
+            {hideCheckbox ? (
+              <></>
+            ) : (
+              <BouncyCheckbox
+                iconStyle={{ borderColor: "lightgray", borderRadius: 0 }}
+                fillColor="green"
+                isChecked={isFoodInCart(food, cartItems)}
+                onPress={(checkboxValue) => selectItem(food, checkboxValue)}
+              />
+            )}
+            <FoodInfo food={food} />
+            <FoodImage food={food} marginLeft={marginLeft ? marginLeft : 0} />
+          </View>
+          <Divider
+            width={0.5}
+            orientation="vertical"
+            style={{ marginHorizontal: 20 }}
           />
-          <FoodInfo food={food} />
-          <FoodImage food={food} />
         </View>
-        <Divider 
-        width={0.5} 
-        orientation="vertical"
-        style ={{ marginHorizontal: 20 }}
-        />
-      </View>
-    ))}
-  </ ScrollView >
+      ))}
+    </ScrollView>
   );
 }
 
@@ -109,7 +80,7 @@ const FoodInfo = (props) => (
   </View>
 );
 
-const FoodImage = (props) => (
+const FoodImage = ({ marginLeft, ...props }) => (
   <View>
     <Image
       source={{ uri: props.food.image }}
@@ -117,6 +88,7 @@ const FoodImage = (props) => (
         width: 100,
         height: 100,
         borderRadius: 8,
+        marginLeft: marginLeft,
       }}
     />
   </View>
