@@ -1,4 +1,18 @@
-# My Universal React Project
+# Uber Eats Clone React Project
+
+<p>
+👉 Built a native mobile app for iOS and Android
+
+🟣 Redux was used for state management when building this app
+
+🔥 Firebase was used in order to store your order and retrieve them
+
+🚀 Reactive Native tools to implement frontend design
+
+🌐 Used Google Maps and Yelp API to render content
+</p>
+
+
 
 <p>
   <!-- iOS -->
